@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hihorus AI - Công cụ AI hỗ trợ chẩn đoán, xử lý hình ảnh nhãn khoa">
+    <title>Hihorus AI | Trí tuệ nhân tạo trong nhãn khoa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 1. Header Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container fade-in">
+            <a href="#" class="logo">
+                <img src="hihorus-logo-square.png" alt="Hihorus AI Logo" id="logo-img">
+                <span class="logo-text">Hihorus AI</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#products">Sản phẩm</a></li>
+                    <li><a href="#features">Tính năng</a></li>
+                    <li><a href="#about">Về chúng tôi</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <div class="lang-switch">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <span>VI</span>
+                </div>
+                <a href="#login" class="btn btn-secondary">Đăng nhập</a>
+                <a href="#demo" class="btn btn-primary">Sử dụng ngay</a>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. Hero Section -->
+        <section class="hero">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="neural-mesh"></div>
+            </div>
+            
+            <div class="container hero-container">
+                <div class="hero-content fade-in-up">
+                    <div class="pill">Trí Tuệ Nhân Tạo & Y Tế</div>
+                    <h1 class="hero-title">Công cụ AI hỗ trợ chẩn đoán,<br/><span class="text-navy">xử lý hình ảnh nhãn khoa</span></h1>
+                    <p class="hero-subtitle">Tiên phong trong việc ứng dụng trí tuệ nhân tạo để phân tích hình ảnh đáy mắt (Fundus) và hình ảnh OCT, giúp bác sĩ chẩn đoán sớm và chính xác các bệnh lý nhãn khoa.</p>
+                    <div class="hero-actions">
+                        <a href="#start" class="btn btn-primary btn-large">Bắt đầu miễn phí</a>
+                        <a href="#about" class="btn btn-secondary btn-large">Tìm hiểu thêm về công nghệ</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual fade-in-up delay-1">
+                    <div class="abstract-eye-model">
+                        <div class="glow-ring rng-1"></div>
+                        <div class="glow-ring rng-2"></div>
+                        <div class="glow-ring rng-3"></div>
+                        <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <div class="floating-badge badge-1 float-anim-1">
+                        <span>Độ chính xác cao</span>
+                    </div>
+                    <div class="floating-badge badge-2 float-anim-2">
+                        <span>Phân tích theo thời gian thực</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Trusted Partners -->
+        <section class="partners-section">
+            <div class="container text-center reveal-on-scroll">
+                <p class="partners-title">Hợp tác và đồng hành cùng các tổ chức uy tín</p>
+                <div class="partners-logos">
+                    <!-- Placeholder text since actual logos aren't extracted -->
+                    <div class="partner-logo">NVIDIA Inception</div>
+                    <div class="partner-logo">Microsoft for Startups</div>
+                    <div class="partner-logo">Google for Startups</div>
+                    <div class="partner-logo">AWS</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Về HiHorus AI -->
+        <section id="about" class="about-section section bg-light">
+            <div class="container">
+                <div class="split-layout reveal-on-scroll">
+                    <div class="split-content">
+                        <div class="pill">VỀ HIHORUS AI</div>
+                        <h2 class="section-title">Trí tuệ nhân tạo - <br/><span class="text-navy">Nhãn khoa chính xác.</span></h2>
+                        <p class="section-description">HiHorus AI là nền tảng trí tuệ nhân tạo tiên tiến được thiết kế chuyên biệt cho lĩnh vực nhãn khoa. Chúng tôi mang đến các giải pháp phân tích hình ảnh y khoa chuẩn xác, hỗ trợ bác sĩ và kỹ thuật viên đưa ra quyết định nhanh chóng, chuyên nghiệp và tối ưu.</p>
+                        
+                        <div class="feature-list mt-8">
+                            <div class="feat-item">
+                                <div class="list-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                                <span>Phân tích hình ảnh đáy mắt (Fundus)</span>
+                            </div>
+                            <div class="feat-item">
+                                <div class="list-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                                <span>Phân tích cắt lớp võng mạc (OCT)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="split-visual abstract-visual">
+                         <div class="glass-orb">
+                            <svg class="med-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Problem Statement -->
+        <section class="problem-section section">
+            <div class="container">
+                <div class="section-header align-center reveal-on-scroll">
+                    <h2 class="section-title">CHÚNG TÔI ĐANG GIẢI QUYẾT <span class="text-navy">VẤN ĐỀ GÌ?</span></h2>
+                </div>
+                
+                <div class="grid grid-3 reveal-on-scroll delay-1">
+                    <div class="stat-card">
+                        <div class="stat-number text-navy">80%</div>
+                        <p>Các bệnh về mắt có thể điều trị hoặc phòng ngừa nếu được phát hiện sớm.</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number text-navy">132.000</div>
+                        <p>Người mù lòa ước tính tại Việt Nam do các bệnh lý về võng mạc và đục thủy tinh thể.</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number text-navy">260.000+</div>
+                        <p>Số lượt khám mắt tại bệnh viện mắt trung ương mỗi năm, gây ra tình trạng quá tải.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Collaborative Projects -->
+        <section id="products" class="projects-section section bg-light">
+            <div class="container">
+                 <div class="section-header align-center reveal-on-scroll">
+                    <h2 class="section-title">CÁC DỰ ÁN <span class="text-navy">HỢP TÁC</span></h2>
+                </div>
+                
+                <div class="grid grid-3 reveal-on-scroll delay-1">
+                    <div class="feature-card project-card">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                        <h3>Võng mạc đái tháo đường</h3>
+                        <p>Chẩn đoán bệnh Võng mạc đái tháo đường thông qua việc phân tích và xử lý ảnh màu đáy mắt.</p>
+                    </div>
+                    
+                    <div class="feature-card project-card">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                        </div>
+                        <h3>Bệnh lý điểm vàng</h3>
+                        <p>Ứng dụng AI phân tích hình ảnh OCT để phát hiện nhanh chóng các bất thường tại vùng điểm vàng.</p>
+                    </div>
+                    
+                    <div class="feature-card project-card">
+                        <div class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </div>
+                        <h3>Sàng lọc Glaucoma</h3>
+                        <p>Hỗ trợ sàng lọc Glaucoma (Thiên đầu thống) qua thuật toán đo tỷ lệ lõm gai thị trên ảnh màu đáy mắt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Custom AI Model Training -->
+        <section id="features" class="training-section section">
+            <div class="container">
+                <div class="split-layout reveal-on-scroll">
+                    <div class="split-content dec-padding">
+                        <div class="pill">Dịch vụ cốt lõi</div>
+                        <h2 class="section-title">HUẤN LUYỆN MÔ HÌNH AI <span class="text-navy">TÙY CHỈNH</span></h2>
+                        <p class="section-description">Chúng tôi cung cấp dịch vụ huấn luyện mô hình trí tuệ nhân tạo theo yêu cầu, dựa trên tập dữ liệu đặc thù của từng bệnh viện hoặc tổ chức y tế.</p>
+                        
+                        <ul class="benefit-list">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Độ chính xác cao vượt trội.</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Tối ưu hóa cho thiết bị địa phương.</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Bảo mật dữ liệu tuyệt đối (Tuân thủ HIPAA).</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Tích hợp linh hoạt vào quy trình sẵn có.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="split-visual">
+                        <div class="highlight-card interactive-card bg-navy-dark text-white">
+                            <h3>Nghiên cứu khoa học</h3>
+                            <p>Bạn đang thực hiện nghiên cứu? Chúng tôi sẵn sàng đồng hành cùng các bác sĩ trong các dự án nghiên cứu khoa học, giúp tăng tốc quá trình xử lý và đưa ra bằng chứng y học.</p>
+                            <a href="#contact" class="btn btn-primary mt-4">Liên hệ hợp tác</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. The 5-Step Process -->
+        <section class="process-section section bg-light">
+             <div class="container">
+                <div class="section-header align-center reveal-on-scroll">
+                    <h2 class="section-title">Sẵn sàng <span class="text-navy">bắt đầu?</span></h2>
+                    <p class="section-description">Quy trình 5 bước để xây dựng và đưa mô hình AI nhãn khoa vào ứng dụng thực tế một cách hiệu quả.</p>
+                </div>
+                
+                <div class="timeline reveal-on-scroll delay-1">
+                    <div class="timeline-item">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h4>Thảo luận, xác định mục tiêu</h4>
+                            <p>Xác định mục tiêu xây dựng mô hình.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h4>Lập kế hoạch thu thập dữ liệu</h4>
+                            <p>Thu thập và gắn nhãn khối lượng dữ liệu phù hợp.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h4>Huấn luyện mô hình</h4>
+                            <p>Huấn luyện AI chuyên sâu theo yêu cầu.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <h4>Triển khai và đánh giá</h4>
+                            <p>Đánh giá hiệu suất trong môi trường thực tế.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <h4>Tinh chỉnh và phát triển</h4>
+                            <p>Cập nhật và tối ưu liên tục theo thời gian.</p>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- 9. Founders & Team -->
+        <section class="team-section section">
+            <div class="container">
+                <div class="section-header align-center reveal-on-scroll">
+                    <div class="pill">Cộng sự</div>
+                    <h2 class="section-title">Đội ngũ <span class="text-navy">sáng lập</span></h2>
+                    <p class="section-description">Sự kết hợp giữa chuyên môn y khoa hàng đầu và công nghệ tiên tiến nhất.</p>
+                </div>
+                
+                <div class="grid grid-4 reveal-on-scroll delay-1">
+                    <div class="team-card">
+                        <div class="team-avatar">P</div>
+                        <h4>PGS. TS. BS. Phạm Ngọc Đông</h4>
+                        <p class="team-role">Cố vấn chuyên môn cao cấp</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">H</div>
+                        <h4>ThS. BS. Nguyễn Đình Hiếu</h4>
+                        <p class="team-role">Đồng sáng lập & Giám đốc y khoa</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">N</div>
+                        <h4>Trần Đình Khôi Nguyên</h4>
+                        <p class="team-role">Đồng sáng lập & Giám đốc công nghệ (CTO)</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">T</div>
+                        <h4>Trần Đình Trung</h4>
+                        <p class="team-role">Đồng sáng lập & Giám đốc vận hành (COO)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 10. FAQ & Contact CTA -->
+         <section class="cta-section section text-center pattern-bg">
+            <div class="container reveal-on-scroll">
+                <h2 class="cta-title">Mang trí tuệ nhân tạo vào phòng khám của bạn</h2>
+                <p class="cta-description">Liên hệ ngay hôm nay để nhận được tư vấn từ các chuyên gia của chúng tôi và trải nghiệm dùng thử nền tảng miễn phí.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary btn-large">Liên hệ tư vấn</a>
+                    <a href="#faq" class="btn btn-secondary btn-large cta-outline">Giải đáp thắc mắc</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="hihorus-logo-square.png" alt="Hihorus AI Logo" class="footer-logo">
+                        <span class="logo-text">Hihorus AI</span>
+                    </div>
+                    <p class="footer-mission">Nền tảng trí tuệ nhân tạo chuyên biệt phân tích hình ảnh nhãn khoa, nâng cao năng lực chẩn đoán.</p>
+                    <div class="contact-info mt-4">
+                        <p><strong>Địa chỉ:</strong> Văn phòng tại Hà Nội, Việt Nam</p>
+                        <p><strong>Email:</strong> contact@hihorus.ai</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Sản phẩm</h4>
+                    <ul>
+                        <li><a href="#">Chẩn đoán AI</a></li>
+                        <li><a href="#">Huấn luyện mô hình</a></li>
+                        <li><a href="#">Báo cáo lâm sàng</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Công ty</h4>
+                    <ul>
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Tin tức & Sự kiện</a></li>
+                        <li><a href="#">Nghiên cứu khoa học</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Pháp lý</h4>
+                    <ul>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Chính sách bảo mật (HIPAA)</a></li>
+                        <li><a href="#">Bản quyền dữ liệu</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hihorus AI. Bản quyền đã được bảo hộ.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
