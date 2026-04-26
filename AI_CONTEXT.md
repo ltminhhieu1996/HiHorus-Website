@@ -1,3 +1,4 @@
+<!-- AI DIRECTIVE: KHI BẮT ĐẦU PHIÊN LÀM VIỆC MỚI VỚI DỰ ÁN NÀY, BẠN BẮT BUỘC PHẢI ĐỌC TOÀN BỘ FILE NÀY ĐỂ NẮM CONTEXT TRƯỚC KHI LÀM VIỆC -->
 # Hihorus AI Website - Context & Design System
 
 ## 1. Git Repository & Deployment
@@ -10,6 +11,7 @@
   git commit -m "Auto update via AI"
   git push
   ```
+  **LƯU Ý QUAN TRỌNG:** KHÔNG được tự động push code sau mỗi lần chỉnh sửa file. CHỈ thực hiện thao tác push này khi người dùng đưa ra chỉ thị yêu cầu rõ ràng.
 
 ## 2. Design System & CSS Architecture
 Website được thiết kế theo phong cách hiện đại, sử dụng **White & Navy Blue Theme** kết hợp với các hiệu ứng kính (Glassmorphism).
