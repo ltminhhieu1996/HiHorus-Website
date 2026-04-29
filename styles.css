@@ -37,7 +37,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-primary); background-color: var(--color-bg-primary); color: var(--color-text-main); line-height: 1.6; overflow-x: hidden; }
-.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 60px; }
 
 .mt-4 { margin-top: 16px; }
 .mt-8 { margin-top: 32px; }
@@ -117,8 +117,8 @@ ul { list-style: none; }
 .shape-2 { bottom: 20%; left: -5%; width: 500px; height: 400px; background: var(--color-accent-navy); }
 
 .hero-container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
-.hero-title { font-size: 3.5rem; margin-bottom: 24px; line-height: 1.1;}
-.hero-subtitle { font-size: 1.15rem; margin-bottom: 40px; max-width: 600px; }
+.hero-title { font-size: 3rem; margin-bottom: 24px; line-height: 1.1;}
+.hero-subtitle { font-size: 1.15rem; margin-bottom: 40px; max-width: 600px; text-align: justify; }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap;}
 
 .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; height: 400px;}
@@ -214,6 +214,15 @@ ul { list-style: none; }
 }
 .team-card h4 { font-size: 1.15rem; margin-bottom: 8px; color: var(--color-bg-navy); }
 .team-role { font-size: 0.95rem; color: var(--color-text-muted); font-weight: 500; }
+.social-btn {
+    width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; background: var(--color-bg-secondary); color: var(--color-text-muted);
+    transition: all 0.3s ease; text-decoration: none;
+}
+.social-btn:hover {
+    background: var(--color-accent-navy); color: white; transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(15, 58, 141, 0.2);
+}
 
 /* --- CTA SECTION --- */
 .cta-section { background-color: var(--color-bg-navy); color: var(--color-text-inverse); padding: 100px 0; position: relative; }
@@ -255,7 +264,7 @@ ul { list-style: none; }
 
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 1024px) {
-    .hero-title { font-size: 2.8rem; }
+    .hero-title { font-size: 2.5rem; }
     .grid-3 { grid-template-columns: repeat(2, 1fr); }
     .grid-4 { grid-template-columns: repeat(2, 1fr); }
     .split-layout { gap: 40px; }
@@ -271,7 +280,7 @@ ul { list-style: none; }
     .dec-padding { padding-bottom: 20px;}
     
     .hero { padding: 120px 0 60px; }
-    .hero-title { font-size: 2.2rem; }
+    .hero-title { font-size: 2rem; }
     .hero-subtitle { margin: 0 auto 32px; }
     .hero-actions { justify-content: center; }
     

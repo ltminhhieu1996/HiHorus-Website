@@ -33,7 +33,8 @@ Website được thiết kế theo phong cách hiện đại, sử dụng **Whit
 ### Typography (Cấu trúc chữ)
 - **Font-family**: `Plus Jakarta Sans`, system-ui, sans-serif.
 - **Headings (h1-h4)**: `font-weight: 700`, `line-height: 1.2`, `letter-spacing: -0.02em`.
-- **Paragraphs**: `line-height: 1.6`, màu `Text Muted`.
+- **Hero Title**: `font-size: 3rem`. Luôn giữ các cụm từ quan trọng như "Nhãn khoa" trên cùng một dòng, không để ngắt chữ giữa dòng.
+- **Paragraphs**: `line-height: 1.6`, màu `Text Muted`. Subtitle thường được `text-align: justify`.
 
 ### UI Components (Thành phần giao diện)
 - **Buttons (Nút bấm)**: Hình viên thuốc (`border-radius: 9999px`), có transition mượt mà.
@@ -45,14 +46,23 @@ Website được thiết kế theo phong cách hiện đại, sử dụng **Whit
   - Sử dụng cho `.navbar.scrolled` và `.floating-badge` với `backdrop-filter: blur(12px)` hoặc `16px`. Nền trắng trong suốt `rgba(255, 255, 255, 0.7)`.
 
 ### Layout & Spacing (Bố cục)
-- **Container**: `max-width: 1280px`, margin tự động ra giữa.
+- **Container**: `max-width: 1280px`, margin tự động ra giữa, `padding: 0 60px` để tạo độ cân đối cho nội dung.
 - **Grid Systems**: `.grid-3` (3 cột), `.grid-4` (4 cột), `.split-layout` (2 cột 1:1 với gap lớn).
 - **Sections**: Padding chuẩn là `100px 0`.
 
 ### Animations (Hiệu ứng)
 - Scroll Reveal Animations: Các class `.fade-in`, `.fade-in-up`, `.reveal-on-scroll` sẽ hiển thị mờ dần và trượt lên khi người dùng cuộn trang.
 - Keyframes: Sử dụng `float1`, `float2` (anim bay lơ lửng) cho các phần tử đồ họa trừu tượng.
-## 3. General Communication Rules (Quy định giao tiếp)
+
+## 3. Content Guidelines (Định hướng nội dung)
+- **Slogan chính**: "Công cụ AI về y tế - Chuyên biệt cho Nhãn khoa".
+- **Thông điệp cốt lõi**: HiHorus AI tập trung vào phân tích hình ảnh nhãn khoa chuyên sâu (Fundus, OCT), hỗ trợ bác sĩ ra quyết định chính xác và nhanh chóng.
+- **Tính năng chính**:
+  1. Phân tích hình ảnh đáy mắt (Fundus).
+  2. Phân tích cắt lớp võng mạc (OCT).
+  3. Các công cụ hỗ trợ thăm khám và điều trị bệnh lý nhãn khoa.
+
+## 4. General Communication Rules (Quy định giao tiếp)
 - **Language**: Luôn luôn ưu tiên trả lời và giao tiếp bằng **Tiếng Việt** trước tiên trong mọi tình huống (kể cả khi tạo nội dung mẫu hoặc code comments).
 
-*(AI Note: Hãy giữ nguyên các class name, variable CSS và quy tắc giao tiếp này khi được yêu cầu làm việc với dự án này).*
+*(AI Note: Hãy giữ nguyên các class name, variable CSS và quy tắc nội dung này để đảm bảo tính nhất quán của website).*
