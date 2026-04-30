@@ -83,3 +83,16 @@ Thông tin chi tiết về các mô hình AI được phát triển bởi Hihoru
   - Vết rạn (Lacquer crack).
 - **Task 3**: Model dự đoán độ tương đương cầu (Spherical Equivalent Prediction) của bệnh nhân.
 
+## 6. Diagnostic Interface (Giao diện Chẩn đoán)
+Giao diện chẩn đoán (`diagnostic.html`) được xây dựng chuyên sâu cho cả DR và PM:
+- **Kiến trúc luồng dữ liệu (API)**:
+  - Frontend (HTML/JS) được host trên Cloudflare Pages.
+  - Backend (Python/Flask) chạy cục bộ (`localhost:5000`) để load model.
+  - **Bảo mật Model**: File model AI nặng `.pth`, `.pt`, `.h5` bị chặn bởi `.gitignore` và tuyệt đối KHÔNG push lên GitHub.
+- **Tính năng UI/UX chính**:
+  - Trạng thái ban đầu: Vùng tải ảnh cân đối ở giữa (Không hiển thị khung đen trống).
+  - Trạng thái kết quả: Layout 2 cột (Ảnh/Overlay bên trái 45%, Kết quả bên phải 55%).
+  - **Grad-CAM**: Nút bật/tắt hiển thị bản đồ nhiệt (Vùng AI tập trung) cho cả 2 bệnh lý.
+  - **Phân độ & Khuyến nghị**: Hiển thị chữ lớn với màu sắc cảnh báo theo mức độ nghiêm trọng (0: Xanh lá -> 4: Đỏ thẫm), kèm theo khuyến nghị lâm sàng chi tiết.
+  - **DR Controls**: Bật/tắt bounding box theo từng loại tổn thương, kèm thanh lọc Confidence. (Đã chuẩn hóa nhãn: 0: Vi phình mạch, 1: Xuất huyết, 2: Xuất tiết cứng, 3: Xuất tiết mềm, 4: Gai thị).
+  - **PM Controls**: Đánh dấu vùng tổn thương bằng segmentation mask (CNV, Fuchs spot, Lacquer crack) với thanh trượt độ đậm nhạt (Opacity).
