@@ -83,8 +83,8 @@ Thông tin chi tiết về các mô hình AI được phát triển bởi Hihoru
   - Vết rạn (Lacquer crack).
 - **Task 3**: Model dự đoán độ tương đương cầu (Spherical Equivalent Prediction) của bệnh nhân.
 
-## 6. Diagnostic Interface (Giao diện Chẩn đoán)
-Giao diện chẩn đoán (`diagnostic.html`) được xây dựng chuyên sâu cho cả DR và PM:
+## 6. Trang AI (AI Interface)
+Trang AI (`ai.html`) được xây dựng chuyên sâu cho cả DR và PM:
 - **Kiến trúc luồng dữ liệu (API)**:
   - Frontend (HTML/JS) được host trên Cloudflare Pages.
   - Backend (Python/Flask) chạy cục bộ (`localhost:5000`) để load model.
