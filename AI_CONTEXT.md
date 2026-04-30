@@ -96,3 +96,12 @@ Trang AI (`ai.html`) được xây dựng chuyên sâu cho cả DR và PM:
   - **Phân độ & Khuyến nghị**: Hiển thị chữ lớn với màu sắc cảnh báo theo mức độ nghiêm trọng (0: Xanh lá -> 4: Đỏ thẫm), kèm theo khuyến nghị lâm sàng chi tiết.
   - **DR Controls**: Bật/tắt bounding box theo từng loại tổn thương, kèm thanh lọc Confidence. (Đã chuẩn hóa nhãn: 0: Vi phình mạch, 1: Xuất huyết, 2: Xuất tiết cứng, 3: Xuất tiết mềm, 4: Gai thị).
   - **PM Controls**: Đánh dấu vùng tổn thương bằng segmentation mask (CNV, Fuchs spot, Lacquer crack) với thanh trượt độ đậm nhạt (Opacity).
+
+## 7. Workspace Synchronization (Đồng bộ Không gian làm việc)
+- **Công cụ lập trình**: Sử dụng **Antigravity** làm AI Coding Assistant chính cho toàn bộ quá trình phát triển (vừa là công cụ code, vừa là người thực thi).
+- **Chiến lược đồng bộ hóa (PC & Laptop)**:
+  1.  **Code (Frontend & Backend)**: Đồng bộ thông qua **GitHub** (`git push` trên máy này và `git pull` trên máy kia). Antigravity chịu trách nhiệm commit và push code.
+  2.  **Models AI (Files nặng)**: KHÔNG qua GitHub. Phải sao chép tay (copy/paste) một lần qua USB/Drive/LAN để đảm bảo cấu trúc thư mục `Models/` trên cả PC và Laptop là y hệt nhau.
+  3.  **Mô hình hoạt động**:
+      -   **PC (i3 + GTX 1060 3GB)**: Đóng vai trò là Server AI chính (cày ải tính toán CUDA). Chạy lệnh `python server.py`.
+      -   **Laptop**: Đóng vai trò thiết kế giao diện, phát triển code Frontend và thao tác với Antigravity. Để test, trang web (`ai.html`) trên Laptop sẽ gọi API về địa chỉ IP mạng LAN của PC (ví dụ: `const API = "http://192.168.x.x:5000";`).
