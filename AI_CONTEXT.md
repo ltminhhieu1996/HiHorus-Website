@@ -66,3 +66,20 @@ Website được thiết kế theo phong cách hiện đại, sử dụng **Whit
 - **Language**: Luôn luôn ưu tiên trả lời và giao tiếp bằng **Tiếng Việt** trước tiên trong mọi tình huống (kể cả khi tạo nội dung mẫu hoặc code comments).
 
 *(AI Note: Hãy giữ nguyên các class name, variable CSS và quy tắc nội dung này để đảm bảo tính nhất quán của website).*
+
+## 5. AI Models Structure (Cấu trúc các mô hình AI)
+Thông tin chi tiết về các mô hình AI được phát triển bởi Hihorus:
+
+### Thư mục DR (Diabetic Retinopathy - Bệnh võng mạc Đái tháo đường)
+- **Model 1**: Phân độ bệnh (Grading).
+- **Model 2**: Phát hiện tổn thương (Lesion Detection).
+  - Các loại tổn thương bao gồm: Xuất huyết (Hemorrhage), Xuất tiết cứng/mềm (Hard/Soft Exudates), Vi phình mạch (Microaneurysms) và Gai thị (Optic Disc).
+
+### Thư mục PM (Pathological Myopia - Cận thị bệnh lý)
+- **Task 1**: Model phân độ bệnh (Grading).
+- **Task 2**: 3 Model đánh dấu tổn thương (Lesion Marking):
+  - Tân mạch võng mạc (CNV).
+  - Điểm Fuch (Fuchs spot).
+  - Vết rạn (Lacquer crack).
+- **Task 3**: Model dự đoán độ tương đương cầu (Spherical Equivalent Prediction) của bệnh nhân.
+

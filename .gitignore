@@ -1,0 +1,17 @@
+# Ignore AI models
+Models/
+*.pt
+*.pth
+*.h5
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+env/
+.env
+
+# MacOS
+.DS_Store
