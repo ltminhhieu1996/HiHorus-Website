@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Target IOP Calculator - HiHorus AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#64748b',
+                        accent: '#10b981',
+                        danger: '#ef4444',
+                        warning: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif !important; }
+        .card { background: white; border-radius: 1.5rem; border: 1px solid rgba(0,0,0,0.06); transition: all 0.2s; }
+        .dark .card { background: #1e293b; border-color: rgba(255,255,255,0.06); }
+        input[type="number"], select { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 0.75rem; padding: 0.75rem; font-weight: 700; outline: none; transition: all 0.2s; }
+        .dark input[type="number"], .dark select { background: #0f172a; border-color: rgba(255,255,255,0.1); color: #f1f5f9; }
+        input:focus, select:focus { border-color: #3b82f6; ring: 2px; ring-color: #3b82f6/20; }
+        .step-btn { width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; background: #f1f5f9; border-radius: 0.75rem; font-weight: bold; cursor: pointer; }
+        .dark .step-btn { background: rgba(255,255,255,0.05); color: #94a3b8; }
+    </style>
+</head>
+<body class="dark bg-slate-50 dark:bg-slate-950 min-h-screen">
+    <header class="navbar p-4 border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="../../index.html" class="flex items-center gap-3">
+                <img src="../../assets/hihorus-logo-square.png" alt="Logo" class="w-10 h-10 rounded-xl">
+                <div>
+                    <h1 class="text-sm font-black dark:text-white leading-tight uppercase">Target IOP</h1>
+                    <p class="text-[10px] font-bold text-slate-500 tracking-widest">HiHorus Calculator</p>
+                </div>
+            </a>
+            <div class="flex gap-4">
+                <a href="../../index.html" class="text-xs font-bold text-slate-500 hover:text-primary transition-colors">TRANG CHỦ</a>
+                <button onclick="document.body.classList.toggle('dark')" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">🌓</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left Panel: Inputs -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="card p-6 shadow-xl shadow-blue-500/5">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-1.5 h-5 bg-blue-500 rounded-full"></div>
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500">Thông số bệnh nhân</h2>
+                    </div>
+
+                    <div class="space-y-5">
+                        <!-- Method -->
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase">Phương pháp tính</label>
+                            <select id="method" class="w-full text-blue-500" onchange="updateView()">
+                                <option value="jampel">Jampel's Formula (Tùy biến cao)</option>
+                                <option value="aao">Khuyến cáo AAO (Preferred Practice)</option>
+                                <option value="clinical">Clinical Studies (Theo giai đoạn)</option>
+                            </select>
+                        </div>
+
+                        <!-- IOP & CCT -->
+                        <div class="grid grid-cols-1 gap-5 pt-2">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-600 dark:text-slate-300">Nhãn áp đo được (mmHg)</label>
+                                <div class="flex gap-2">
+                                    <button class="step-btn" onclick="step('ip', -0.5)">-</button>
+                                    <input type="number" id="ip" value="22" step="0.5" class="flex-1 text-center text-xl">
+                                    <button class="step-btn" onclick="step('ip', 0.5)">+</button>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-600 dark:text-slate-300">Độ dày giác mạc (μm)</label>
+                                <div class="flex gap-2">
+                                    <button class="step-btn" onclick="step('cct', -5)">-</button>
+                                    <input type="number" id="cct" value="545" step="5" class="flex-1 text-center text-xl">
+                                    <button class="step-btn" onclick="step('cct', 5)">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Forms -->
+                        <div id="form-jampel" class="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-bold text-slate-400 uppercase">Tổn thương thị trường (Z)</label>
+                                    <select id="z" onchange="calculate()">
+                                        <option value="0">0 (Không tổn thương)</option>
+                                        <option value="1">1 (Tổn thương nhẹ)</option>
+                                        <option value="2">2 (Tổn thương TB)</option>
+                                        <option value="3">3 (Tổn thương nặng)</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-bold text-slate-400 uppercase">Tổn thương gai thị (Y)</label>
+                                    <select id="y" onchange="calculate()">
+                                        <option value="0">0 (C/D < 0.5)</option>
+                                        <option value="1">1 (C/D 0.5 - 0.7)</option>
+                                        <option value="2">2 (C/D > 0.7)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="form-aao" class="pt-4 border-t border-slate-100 dark:border-slate-800 hidden space-y-2">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase">Mục tiêu giảm (AAO)</label>
+                            <select id="aaoLevel" class="w-full" onchange="calculate()">
+                                <option value="1">Giảm 25% (Mặc định)</option>
+                                <option value="2">Giảm 35% (Nhãn áp cao/Tiến triển)</option>
+                                <option value="4">Giảm 22.5% (Ocular Hypertension)</option>
+                                <option value="7">Giảm 45% (Nặng/Tiến triển nhanh)</option>
+                            </select>
+                        </div>
+
+                        <div id="form-clinical" class="pt-4 border-t border-slate-100 dark:border-slate-800 hidden space-y-2">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase">Giai đoạn bệnh lý</label>
+                            <select id="clinicalStage" class="w-full" onchange="calculate()">
+                                <option value="suspect">Glaucoma Suspect (20%)</option>
+                                <option value="mild">Giai đoạn Sớm (25%)</option>
+                                <option value="moderate">Giai đoạn Trung bình (35%)</option>
+                                <option value="severe">Giai đoạn Nặng (45%)</option>
+                                <option value="ntg">Nhãn áp bình thường - NTG (30%)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Results -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Result Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="card p-5 bg-blue-500/5 border-l-4 border-l-blue-500">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase mb-2">Nhãn áp hiệu chỉnh</p>
+                        <div class="flex items-baseline gap-1">
+                            <span id="res-corrected" class="text-4xl font-black text-blue-500">--</span>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase">mmHg</span>
+                        </div>
+                    </div>
+                    <div class="card p-5 bg-emerald-500/5 border-l-4 border-l-emerald-500">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase mb-2">Nhãn áp ĐÍCH</p>
+                        <div class="flex items-baseline gap-1">
+                            <span id="res-target" class="text-4xl font-black text-emerald-500">--</span>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase">mmHg</span>
+                        </div>
+                    </div>
+                    <div class="card p-5 bg-amber-500/5 border-l-4 border-l-amber-500">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase mb-2">% Giảm mục tiêu</p>
+                        <div class="flex items-baseline gap-1">
+                            <span id="res-pct" class="text-4xl font-black text-amber-500">--</span>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visualization -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card p-6 flex flex-col items-center justify-center relative overflow-hidden">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest absolute top-6 left-6">Trực quan</h3>
+                        <div class="w-full h-48 mt-4"><canvas id="iopGauge"></canvas></div>
+                        <p class="text-[10px] text-slate-400 mt-4 text-center">Biểu đồ so sánh giữa Nhãn áp hiện tại (Cam) và Đích (Xanh)</p>
+                    </div>
+                    <div class="card p-6 space-y-4">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Chi tiết tính toán</h3>
+                        <div id="calc-details" class="text-sm space-y-2 text-slate-600 dark:text-slate-300"></div>
+                        <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-emerald-500">✨</span>
+                                <h4 class="text-xs font-bold uppercase text-slate-400">Khuyến nghị lâm sàng</h4>
+                            </div>
+                            <p id="clinical-rec" class="text-sm leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- References -->
+                <div class="card p-6 bg-slate-900 text-white border-none shadow-2xl">
+                    <h3 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-4">Tài liệu tham khảo</h3>
+                    <ul class="text-[11px] space-y-2 text-slate-400 list-disc pl-4">
+                        <li>Jampel HD. Target pressure: how to select it and how to achieve it. Curr Opin Ophthalmol. 1997.</li>
+                        <li>American Academy of Ophthalmology. Primary Open-Angle Glaucoma Preferred Practice Pattern. 2020.</li>
+                        <li>The Collaborative Normal-Tension Glaucoma Study Group. Comparison of glaucomatous progression between untreated patients with normal-tension glaucoma and patients with therapeutically reduced intraocular pressures. 1998.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let gaugeChart = null;
+
+        function step(id, delta) {
+            let el = document.getElementById(id);
+            let val = parseFloat(el.value) + delta;
+            el.value = val;
+            calculate();
+        }
+
+        function updateView() {
+            const method = document.getElementById('method').value;
+            document.getElementById('form-jampel').classList.toggle('hidden', method !== 'jampel');
+            document.getElementById('form-aao').classList.toggle('hidden', method !== 'aao');
+            document.getElementById('form-clinical').classList.toggle('hidden', method !== 'clinical');
+            calculate();
+        }
+
+        function calculate() {
+            const ip = parseFloat(document.getElementById('ip').value);
+            const cct = parseFloat(document.getElementById('cct').value);
+            const method = document.getElementById('method').value;
+
+            // 1. Corrected IOP
+            const correctedIOP = ip - ((cct - 555) / 10) * 0.3;
+            
+            // 2. Target IOP
+            let target = 0;
+            if (method === 'jampel') {
+                const z = parseFloat(document.getElementById('z').value);
+                const y = parseFloat(document.getElementById('y').value);
+                target = correctedIOP * (1 - correctedIOP / 100) - z + y;
+            } else if (method === 'aao') {
+                const levels = { 1: 0.25, 2: 0.35, 4: 0.225, 7: 0.45 };
+                target = correctedIOP * (1 - levels[document.getElementById('aaoLevel').value]);
+            } else {
+                const stages = { suspect: 0.20, mild: 0.25, moderate: 0.35, severe: 0.45, ntg: 0.30 };
+                target = correctedIOP * (1 - stages[document.getElementById('clinicalStage').value]);
+            }
+
+            const safeTarget = Math.max(5, Math.round(target * 10) / 10);
+            const reduction = Math.round(((correctedIOP - safeTarget) / correctedIOP) * 100);
+
+            renderResults(correctedIOP, safeTarget, reduction);
+            updateGauge(correctedIOP, safeTarget);
+        }
+
+        function renderResults(cIOP, target, pct) {
+            document.getElementById('res-corrected').innerText = Math.round(cIOP * 10) / 10;
+            document.getElementById('res-target').innerText = target;
+            document.getElementById('res-pct').innerText = pct;
+
+            let detailHtml = `
+                <div class="flex justify-between"><span>Nhãn áp đo được:</span><span class="font-bold">${document.getElementById('ip').value} mmHg</span></div>
+                <div class="flex justify-between"><span>Hiệu chỉnh (CCT ${document.getElementById('cct').value}μm):</span><span class="font-bold text-blue-500">${Math.round(cIOP * 10) / 10} mmHg</span></div>
+                <div class="flex justify-between border-t border-slate-100 dark:border-slate-800 pt-2 mt-2"><span>Mục tiêu điều trị:</span><span class="font-bold text-emerald-500">${target} mmHg</span></div>
+            `;
+            document.getElementById('calc-details').innerHTML = detailHtml;
+
+            let rec = "";
+            if (pct >= 40) rec = "Cần hạ áp mạnh tay. Đây là giai đoạn bệnh tiến triển nặng hoặc đe dọa thị lực trung tâm.";
+            else if (pct >= 30) rec = "Mức hạ áp trung bình (30-35%). Phù hợp cho đa số các ca POAG giai đoạn trung bình.";
+            else rec = "Hạ áp nhẹ nhàng (20-25%). Phù hợp cho ca nghi ngờ hoặc giai đoạn sớm.";
+            document.getElementById('clinical-rec').innerText = rec;
+        }
+
+        function updateGauge(current, target) {
+            const ctx = document.getElementById('iopGauge').getContext('2d');
+            if (gaugeChart) gaugeChart.destroy();
+            
+            gaugeChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Hiện tại', 'Mục tiêu'],
+                    datasets: [{
+                        data: [current, target],
+                        backgroundColor: ['rgba(245, 158, 11, 0.2)', 'rgba(16, 185, 129, 0.2)'],
+                        borderColor: ['#f59e0b', '#10b981'],
+                        borderWidth: 2,
+                        borderRadius: 12
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { 
+                        x: { min: 0, max: 40, ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { display: false } },
+                        y: { ticks: { color: '#94a3b8', font: { size: 10, weight: 'bold' } }, grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        document.querySelectorAll('input, select').forEach(el => el.addEventListener('change', calculate));
+        updateView();
+    </script>
+</body>
+</html>
